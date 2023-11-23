@@ -1,6 +1,6 @@
 # Notes on Elixir
 
-# Learning Resources
+## Learning Resources
 #### Not an endorsement
 
 ### Online courses
@@ -22,3 +22,23 @@
 - [Designing Elixir Systems with OTP, James Edward Gray II and Bruce Tate](https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/)
 - [Programming Phoenix, Chris McCord, Bruce Tate, and Jose Valim](https://pragprog.com/titles/phoenix14/programming-phoenix-1-4/)
 - [THe Phoenix LiveView Cookbook, Chris Gregori](https://www.liveviewcookbook.com/)
+
+## Installation
+
+[Official Installation Guide](https://elixir-lang.org/install.html)
+
+[ASDF Elixir version Management](https://github.com/asdf-vm/asdf)
+then in a shell:
+- `asdf plugin add erlang`
+- `asdf plugin add elixir`
+- `asdf list-all erlang`
+- `asdf install erlang` <VERSION>, where version matches a recent entry from the list
+- `asdf list-all elixir`
+- `asdf install elixir <VERSION>`, where version matches a recent entry from the list and is compatible with OTP
+- `asdf global erlang <VERSION>` to set a default global version of erlang
+- `asdf global elixir <VERSION>` to set a default global version of elixir
+- `asdf local erlang <VERSION>` to set a local (folder level) version of erlang
+- `asdf local elixir <VERSION>` to set a local (folder level) version of elixir
+- `asdf install` to set version referenced in a local `.tools-version` file
+ 
+
