@@ -44,11 +44,13 @@ then in a shell:
 ## Tools
 #### See [Elixir Docs](https://elixir-lang.org/docs.html) for more details
 
-### [Mix](https://hexdocs.pm/mix/1.15.7/Mix.html)
+### [Mix](https://hexdocs.pm/mix/1.15.7/Mix.html) is an extensible build tool for creating, compiling, testing, managing dependencies, etc.
+
+#### Mix New
 `$mix new <PATH> [--app APP] [--module MODULE] [--sup] [--umbrella]` 
 where `<PATH>` specifies the pathname of project. 
 
-This can be as simple as `mix new foo_bar`, in which case mix will create a new subdirectory of the current path with name `foo_bar'.` . This will create subdirectories `lib` and `test`, with files `foo_bar.ex` and `foo_bar_test.exs`.
+This can be as simple as `mix new foo_bar`, in which case mix will create a new subdirectory of the current path with name `foo_bar`. Under `foo_bar` mix will create subdirectories `lib` and `test`, with files `foo_bar.ex` and `foo_bar_test.exs`.
 
     foo_bar
     ├── README.md
@@ -59,7 +61,7 @@ This can be as simple as `mix new foo_bar`, in which case mix will create a new 
         ├── foo_bar_test.exs
         └── test_helper.exs
 
-The application name is inferred from the path and must start with a lowercase ASCII letter followed by lowercase ASCII letters, numbers, or underscores.  While application names follow snake_case convention, Elixir module names are aliases, which must be capitalized and written in CamelCase.  That is, while `mix new foo_bar` creates file `foo_bar/lib/foo_bar.ex`, the module name in that file (if not specified) is tranformed by capitalizing the initial letter, capitalizing letters following underscores, and removing underscores:`FooBar`
+The application name is inferred from the path and must start with a lowercase ASCII letter followed by lowercase ASCII letters, numbers, or underscores.  While application names follow snake_case convention, Elixir module names are aliases, which must be capitalized and written in CamelCase.  That is, while `mix new foo_bar` creates file `foo_bar/lib/foo_bar.ex`, the module name in that file (if not specified) is transformed by capitalizing the initial letter and letters following underscores and removing underscores. Hence, module `FooBar`:
 
     defmodule FooBar do
     @moduledoc """
@@ -91,7 +93,7 @@ An optional `--app APP` may be provided to specify the OTP name of project.  `mi
         ├── quux_test.exs
         └── test_helper.exs
 
-The optional `--module MODULE` may be used to specify the module name, which must follow module naming conventions.  `mix new foo_bar --module quux_baz` also creates `foo_bar/lib/quux.ex`.
+The optional `--module MODULE` may be used to specify the module name, which must follow module naming conventions.  `mix new foo_bar --module quux` also creates `foo_bar/lib/quux.ex`.
 
 Including both `--app APP` and `--module MODULE` will result in a file  and module named after `MODULE`.
 
@@ -118,3 +120,7 @@ Finally, `--umbrella` may be used to generate an umbrella project.  `mix new foo
     └── mix.exs
 
 Sub-applications may be created under the `apps` subdirectory.
+
+#### mix.exs, used for configuration, dependencies, environments, and versions
+
+As seen above `mix new foo_bar` also creates a file, `mix.exs`
