@@ -175,4 +175,23 @@ One can execute a particular test by `mix test PATH`, where PATH references a pa
 
 #### mix run
 
-`mix run` starts the current application dependencies and the application itself, compiling beforehand if necessary.
+`mix run` starts the current application dependencies and the application itself, ∫compiling beforehand if necessary.
+
+### [iex](https://hexdocs.pm/iex/1.15.7/IEx.html) is the Interactive Elixir shell
+
+Type `iex` at a shell prompt will start an interactive shell into which one may type Elixir expressions.
+Note that expressions entered in iex are not compiled.
+
+To get shell history, one can invoke `iex --erl "-kernel shell_history enabled"`"
+
+For an Elixir application, it is particular convenient to use `iex -S mix`, which causes iex to execute the `mix.exs` script.
+
+iex is integrated with `Kernel.dbg/2`, and can pause code execution via `iex --dbg pry`.
+
+When running tests via iex, it may be useful to pass --trace to avoid running into timeouts as `iex -S mix test --trace`
+
+Once iex is started, one may type Ctrl-G to reference the switch command menu, from whence one can start a new shell and switch between shells.
+
+One may connect to a remote shell via `iex --sname foo --remsh bar@HOST`
+
+
