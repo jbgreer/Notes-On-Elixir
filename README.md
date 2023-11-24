@@ -40,5 +40,81 @@ then in a shell:
 - `asdf local erlang <VERSION>` to set a local (folder level) version of erlang
 - `asdf local elixir <VERSION>` to set a local (folder level) version of elixir
 - `asdf install` to set version referenced in a local `.tools-version` file
- 
 
+## Tools
+#### See [Elixir Docs](https://elixir-lang.org/docs.html) for more details
+
+### [Mix](https://hexdocs.pm/mix/1.15.7/Mix.html)
+`$mix new <PATH> [--app APP] [--module MODULE] [--sup] [--umbrella]` 
+where `<PATH>` specifies the pathname of project. 
+
+This can be as simple as `mix new foo_bar`, in which case mix will create a new subdirectory of the current path with name `foo_bar'.` . This will create subdirectories `lib` and `test`, with files `foo_bar.ex` and `foo_bar_test.exs`.
+
+    foo_bar
+    ├── README.md
+    ├── lib
+    │   └── foo_bar.ex
+    ├── mix.exs
+    └── test
+        ├── foo_bar_test.exs
+        └── test_helper.exs
+
+The application name is inferred from the path and must start with a lowercase ASCII letter followed by lowercase ASCII letters, numbers, or underscores.  While application names follow snake_case convention, Elixir module names are aliases, which must be capitalized and written in CamelCase.  That is, while `mix new foo_bar` creates file `foo_bar/lib/foo_bar.ex`, the module name in that file (if not specified) is tranformed by capitalizing the initial letter, capitalizing letters following underscores, and removing underscores:`FooBar`
+
+    defmodule FooBar do
+    @moduledoc """
+    Documentation for `FooBar`.
+    """
+   
+    @doc """
+    Hello world.
+   
+    ## Examples
+   
+        iex> FooBar.hello()
+        :world
+  
+    """
+      def hello do
+        :world
+      end
+    end
+
+An optional `--app APP` may be provided to specify the OTP name of project.  `mix new foo_bar --app quux` creates a subdirectory of `foo_bar`, but the source file and script are named after `quux`.
+
+    foo_bar
+    ├── README.md
+    ├── lib
+    │   └── quux.ex
+    ├── mix.exs
+    └── test
+        ├── quux_test.exs
+        └── test_helper.exs
+
+The optional `--module MODULE` may be used to specify the module name, which must follow module naming conventions.  `mix new foo_bar --module quux_baz` also creates `foo_bar/lib/quux.ex`.
+
+Including both `--app APP` and `--module MODULE` will result in a file  and module named after `MODULE`.
+
+The `--sup` option may be used to generate an OTP application skeleton including a supervision tree. `mix new foo_bar --sup` generates:
+
+    foo_bar
+    ├── README.md
+    ├── lib
+    │   ├── foo_bar
+    │   │   └── application.ex
+    │   └── foo_bar.ex
+    ├── mix.exs
+    └── test
+        ├── foo_bar_test.exs
+        └── test_helper.exs
+
+Finally, `--umbrella` may be used to generate an umbrella project.  `mix new foo_bar --umbrella` generates
+
+    foo_bar
+    ├── README.md
+    ├── apps
+    ├── config
+    │   └── config.exs
+    └── mix.exs
+
+Sub-applications may be created under the `apps` subdirectory.
