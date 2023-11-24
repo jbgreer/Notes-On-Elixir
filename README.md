@@ -182,7 +182,9 @@ One can execute a particular test by `mix test PATH`, where PATH references a pa
 Type `iex` at a shell prompt will start an interactive shell into which one may type Elixir expressions.
 Note that expressions entered in iex are not compiled.
 
-To get shell history, one can invoke `iex --erl "-kernel shell_history enabled"`"
+`iex` searchs for a file, `.iex.exs` for use as a configuration file.
+
+To get shell history, one can invoke `iex --erl "-kernel shell_history enabled"`
 
 For an Elixir application, it is particular convenient to use `iex -S mix`, which causes iex to execute the `mix.exs` script.
 
@@ -193,5 +195,11 @@ When running tests via iex, it may be useful to pass --trace to avoid running in
 Once iex is started, one may type Ctrl-G to reference the switch command menu, from whence one can start a new shell and switch between shells.
 
 One may connect to a remote shell via `iex --sname foo --remsh bar@HOST`
+
+Useful iex commands
+- <TAB> to autocomplete
+- h  for help
+- r to recompile 
+- t <module> to see types available in a module
 
 
