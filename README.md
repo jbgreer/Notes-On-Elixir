@@ -154,12 +154,25 @@ As seen above `mix new foo_bar` also creates a file, `mix.exs`
       end
     end
 
+Note that `mix.exs` includes a concept of environments; `:dev`, `:test` and `:prod` environments are defined by default.
+Of these, `:dev` is the default environment, except for when running `mix test`, in which case it is `:test`.
+One may change the environment by setting the value of `MIX_ENV`, e.g. `$MIX_ENV=prod mix run`
+
+One may also specify that dependendences are only available for certain environments.
+
 #### mix deps.get
 If a `mix.exs` containes dependencies, one can fetch them via `mix deps.get`
 
 #### mix compile
 
-#### mix test
+To see documentation, `mix help compile.elixir`
+
+#### mix test runs test for a project
+
+`mix test` starts the current application, loads `test/test_helper.exs` and then requires all files matching the `test/**/*_test.ss` pattery in parallel.
+
+One can execute a particular test by `mix test PATH`, where PATH references a particular test script.
 
 #### mix run
 
+`mix run` starts the current application dependencies and the application itself, compiling beforehand if necessary.
